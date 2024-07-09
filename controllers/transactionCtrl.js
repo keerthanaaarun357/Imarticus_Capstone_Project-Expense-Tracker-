@@ -27,28 +27,6 @@ const getAllTransaction = async (req, res) => {
   }
 };
 
-const deleteTransaction = async (req, res) => {
-  try {
-    await transactionModel.findOneAndDelete({ _id: req.body.transacationId });
-    res.status(200).send("Transaction Deleted!");
-  } catch (error) {
-    console.log(error);
-    res.status(500).json(error);
-  }
-};
-const editTransaction = async (req, res) => {
-  try {
-    await transactionModel.findOneAndUpdate(
-      { _id: req.body.transacationId },
-      req.body.payload
-    );
-    res.status(200).send("Edit SUccessfully");
-  } catch (error) {
-    console.log(error);
-    res.status(500).json(error);
-  }
-};
-
 const addTransaction = async (req, res) => {
   try {
     // const newTransection = new transectionModel(req.body);
@@ -60,6 +38,30 @@ const addTransaction = async (req, res) => {
     res.status(500).json(error);
   }
 };
+
+const editTransaction = async (req, res) => {
+  try {
+    await transactionModel.findOneAndUpdate(
+      { _id: req.body.transacationId },
+      req.body.payload
+    );
+    res.status(200).send("Edit Successfully");
+  } catch (error) {
+    console.log(error);
+    res.status(500).json(error);
+  }
+};
+
+const deleteTransaction = async (req, res) => {
+  try {
+    await transactionModel.findOneAndDelete({ _id: req.body.transacationId });
+    res.status(200).send("Transaction Deleted");
+  } catch (error) {
+    console.log(error);
+    res.status(500).json(error);
+  }
+};
+
 
 module.exports = {
   getAllTransaction,
