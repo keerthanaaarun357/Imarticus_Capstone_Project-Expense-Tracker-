@@ -3,7 +3,7 @@ import { Form, Input, message } from "antd";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Spinner from "../components/Spinner";
-import './Register.css'; // Custom CSS file
+import './Register.css';
 
 const Register = () => {
     const navigate = useNavigate();
@@ -12,6 +12,7 @@ const Register = () => {
     // Form submit handler
     const submitHandler = async (values) => {
         try {
+            console.log(values);
             setLoading(true);
             await axios.post("/users/register", values);
             message.success("Registration Successful! Welcome aboard!");
@@ -19,6 +20,7 @@ const Register = () => {
             navigate("/login");
         } catch (error) {
             setLoading(false);
+            console.log(error);
             message.error("Something went wrong. Please try again.");
         }
     };
