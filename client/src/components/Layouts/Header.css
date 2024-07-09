@@ -1,0 +1,39 @@
+.custom-navbar {
+    background: linear-gradient(45deg, #6a11cb 0%, #2575fc 100%);
+    padding: 15px 20px;
+}
+
+.custom-brand {
+    font-family: 'Your Custom Font', sans-serif;
+    font-size: 24px;
+    color: #fff;
+}
+
+.custom-navbar .navbar-toggler {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.custom-navbar .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 0.5)' stroke-width='2' linecap='round' linejoin='round' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+.custom-user {
+    font-family: 'Your Custom Font', sans-serif;
+    color: #fff;
+    margin-right: 20px;
+    font-size: 18px;
+}
+
+.custom-logout-btn {
+    background-color: #ff5e57;
+    border: none;
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.custom-logout-btn:hover {
+    background-color: #ff3b30;
+}

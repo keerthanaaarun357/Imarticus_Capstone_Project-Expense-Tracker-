@@ -1,0 +1,16 @@
+.custom-footer {
+    background: linear-gradient(45deg, #333333 0%, #666666 100%);
+    color: #ffffff;
+    padding: 20px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.footer-text {
+    font-family: 'Your Custom Font', sans-serif;
+    font-size: 16px;
+    margin: 0;
+}
