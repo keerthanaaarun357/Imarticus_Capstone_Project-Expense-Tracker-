@@ -8,9 +8,29 @@
   height: 80vh;
 }
 
-.resgister-page {
+.filters {
   display: flex;
   align-items: center;
-  justify-content: center;
-  height: 90vh;
+  justify-content: space-between;
+  padding: 15px 20px;
+  box-shadow: 0 0 3px gray;
+}
+
+.anticon svg{
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.active-icon {
+  color: black;
+}
+
+.inactive-icon {
+  color: gray;
+}
+
+.switch-icon {
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 10px 15px;
 }
