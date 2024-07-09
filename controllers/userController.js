@@ -1,6 +1,6 @@
 const userModel = require('../models/userModel');
 
-
+// Login Callback
 const loginController = async (req, res) => {
     try {
         const { email, password } = req.body;
@@ -20,7 +20,7 @@ const loginController = async (req, res) => {
     }
 };
 
-
+// Register Callback
 const registerController = async (req, res) => {
     try {
         const newUser = new userModel(req.body);

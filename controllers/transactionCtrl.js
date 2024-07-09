@@ -1,5 +1,6 @@
 const transactionModel = require("../models/transactionModel");
 const moment = require("moment");
+
 const getAllTransaction = async (req, res) => {
   try {
     const { frequency, selectedDate, type } = req.body;
@@ -22,7 +23,7 @@ const getAllTransaction = async (req, res) => {
     res.status(200).json(transactions);
   } catch (error) {
     console.log(error);
-    res.status(500).json(erorr);
+    res.status(500).json(error);
   }
 };
 
@@ -50,6 +51,7 @@ const editTransaction = async (req, res) => {
 
 const addTransaction = async (req, res) => {
   try {
+    // const newTransection = new transectionModel(req.body);
     const newTransaction = new transactionModel(req.body);
     await newTransaction.save();
     res.status(201).send("Transaction Created");
