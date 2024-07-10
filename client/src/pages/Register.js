@@ -9,21 +9,26 @@ const Register = () => {
     const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
 
-    // Form submit handler
-    const submitHandler = async (values) => {
-        try {
-            console.log(values);
-            setLoading(true);
-            await axios.post("/users/register", values);
-            message.success("Registration Successful! Welcome aboard!");
-            setLoading(false);
-            navigate("/login");
-        } catch (error) {
-            setLoading(false);
-            console.log(error);
-            message.error("Something went wrong. Please try again.");
-        }
-    };
+  const submitHandler = async (registerData) => {
+  try {
+    console.log(registerData);
+    setLoading(true);
+    const response = await axios.post("/users/register", registerData);
+    // Handle successful registration based on server response (e.g., token)
+    message.success("Registration Successful! Welcome aboard!");
+    setLoading(false);
+    navigate("/login");
+  } catch (error) {
+    setLoading(false);
+    console.error(error);
+    if (error.response && error.response.status === 400) {
+      message.error("Invalid registration data. Please check your information.");
+    } else {
+      message.error("Something went wrong. Please try again.");
+    }
+  }
+};
+
 
     //Prevent logged-in user from accessing register page
     useEffect(() => {
