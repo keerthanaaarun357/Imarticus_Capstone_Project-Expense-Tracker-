@@ -14,7 +14,7 @@ const Register = () => {
     console.log(registerData);
     setLoading(true);
     const response = await axios.post("/users/register", registerData);
-    // Handle successful registration based on server response (e.g., token)
+
     message.success("Registration Successful! Welcome aboard!");
     setLoading(false);
     navigate("/login");
@@ -30,7 +30,7 @@ const Register = () => {
 };
 
 
-    //Prevent logged-in user from accessing register page
+   
     useEffect(() => {
         if (localStorage.getItem("user")) {
             navigate("/");
