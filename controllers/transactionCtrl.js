@@ -29,7 +29,7 @@ const getAllTransaction = async (req, res) => {
 
 const addTransaction = async (req, res) => {
   try {
-    // const newTransection = new transectionModel(req.body);
+    
     const newTransaction = new transactionModel(req.body);
     await newTransaction.save();
     res.status(201).send("Transaction Created");
