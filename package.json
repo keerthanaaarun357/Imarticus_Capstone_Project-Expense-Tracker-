@@ -4,6 +4,8 @@
   "description": "expense tracker app",
   "main": "server.js",
   "scripts": {
+    "install-server": "cd client && npm install",
+    "start-server": "cd client && node server.js",
     "start": "node server.js",
     "server": "nodemon server.js",
     "client": "npm start --prefix client",
