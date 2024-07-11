@@ -1,12 +1,12 @@
 .custom-footer {
-    background: linear-gradient(45deg, #333333 0%, #666666 100%);
+    background: #577f8a;
     color: #ffffff;
     padding: 20px;
     position: fixed;
     bottom: 0;
     width: 100%;
     text-align: center;
-    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.5);
+    /* box-shadow: 0 -2px 15px rgba(63, 63, 63, 0.5); */
 }
 
 .footer-text {

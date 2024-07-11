@@ -1,20 +1,25 @@
+
 .custom-navbar {
-    background: linear-gradient(45deg, #6a11cb 0%, #2575fc 100%);
+    background: #7EB9CA;
     padding: 15px 20px;
 }
 
 .custom-brand {
-    font-family: 'Your Custom Font', sans-serif;
-    font-size: 24px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     color: #fff;
+    font-size: 1.5rem;
+    font-weight: bold;
+    font-style: italic;
+    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 .custom-navbar .navbar-toggler {
-    border-color: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.637);
+    border-width: 2px;
 }
 
 .custom-navbar .navbar-toggler-icon {
-    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 0.5)' stroke-width='2' linecap='round' linejoin='round' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 0.5)' stroke-width='3' linecap='round' linejoin='round' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
 }
 
 .custom-user {
@@ -25,15 +30,16 @@
 }
 
 .custom-logout-btn {
-    background-color: #ff5e57;
+    background-color: #4d7680;
     border: none;
     color: #fff;
-    padding: 10px 20px;
+    padding: 7px 25px;
     font-size: 16px;
     border-radius: 5px;
     transition: background-color 0.3s ease;
 }
 
 .custom-logout-btn:hover {
-    background-color: #ff3b30;
+    background: #ec0000;
+    color: #fff;
 }

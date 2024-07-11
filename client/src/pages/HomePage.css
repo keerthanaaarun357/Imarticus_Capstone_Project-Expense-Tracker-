@@ -18,5 +18,20 @@
     font-family: 'Your Custom Font', sans-serif;
     font-size: 18px;
     margin-bottom: 20px;
-    color: #666;
+    color: #667;
+}
+
+.filters{
+    color: black;
+    padding: 20px 33px;
+}
+
+.btn-primary{
+    background: #7EB9CA;
+    border: none;
+    color: #fff;
+    padding: 7px 25px;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
 }

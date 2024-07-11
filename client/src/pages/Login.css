@@ -1,46 +1,49 @@
 .login-page {
-    background: url('../../public/login_page.jpg') no-repeat center center fixed;
+    background: url('../../public/loginBG.jpg') no-repeat center center fixed;
     background-size: cover;
     height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 .login-container {
-    background: rgba(255, 255, 255, 0.8);
-    padding: 40px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background: rgba(255, 255, 255, 0.3);
+    padding: 45px;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     text-align: center;
     width: 400px;
 }
 
 .welcome-message {
-    font-family: sans-serif;
     font-size: 24px;
-    margin-bottom: 10px;
+    font-weight: 750;
+    margin-bottom: 20px;
+    color: #202020;
 }
 
 .tagline {
-    font-family: sans-serif;
     font-size: 16px;
-    margin-bottom: 20px;
-    color: #666;
+    font-weight: 500;
+    margin-bottom: 25px;
+    color: #202020;
 }
 
 .ant-form-item-label > label {
     font-weight: bold;
     color: #333;
+    padding: 9px 0px;
 }
 
 .btn-primary {
-    background-color: #007bff;
+    background-color: #1284ff;
     border-color: #007bff;
     color: #fff;
 }
 
 .btn-primary:hover {
-    background-color: #0056b3;
+    background-color: #004085;
     border-color: #004085;
 }
