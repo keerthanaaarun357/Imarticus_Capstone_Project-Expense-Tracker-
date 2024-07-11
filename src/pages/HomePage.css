@@ -1,0 +1,37 @@
+
+.welcome-container {
+    background: rgba(255, 255, 255, 0.8);
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 600px;
+}
+
+.welcome-message {
+    font-family: 'Your Custom Font', sans-serif;
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.intro-text {
+    font-family: 'Your Custom Font', sans-serif;
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: #667;
+}
+
+.filters{
+    color: black;
+    padding: 20px 33px;
+}
+
+.btn-primary{
+    background: #7EB9CA;
+    border: none;
+    color: #fff;
+    padding: 7px 25px;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
