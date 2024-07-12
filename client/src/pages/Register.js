@@ -11,7 +11,6 @@ const Register = () => {
     const [loading, setLoading] = useState(false);
     const [passwordVisible, setPasswordVisible] = useState(false);
 
-    // Form submit handler
     const submitHandler = async (values) => {
         if (values.password !== values.confirmPassword) {
             message.error("Passwords do not match!");
@@ -31,7 +30,6 @@ const Register = () => {
         }
     };
 
-    //Prevent logged-in user from accessing register page
     useEffect(() => {
         if (localStorage.getItem("user")) {
             navigate("/");

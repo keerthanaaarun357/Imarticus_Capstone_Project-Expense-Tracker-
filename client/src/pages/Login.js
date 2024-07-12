@@ -1,35 +1,39 @@
 import React, { useState, useEffect } from "react";
-import { Form, Input, message } from "antd";
+import { Form, Input, message, Checkbox, Button } from "antd";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Spinner from "../components/Spinner";
-import "./Login.css"; // Custom CSS file
+import { EyeInvisibleOutlined, EyeTwoTone } from "@ant-design/icons";
+import "./Login.css";
 
 const Login = () => {
   const [loading, setLoading] = useState(false);
+  const [rememberMe, setRememberMe] = useState(false);
+  const [passwordVisible, setPasswordVisible] = useState(false);
   const navigate = useNavigate();
 
-  // Form submit handler
   const submitHandler = async (values) => {
     try {
       setLoading(true);
-      const { data } = await axios.post("/users/login", values);
+      const { data } = await axios.post("/api/v1/users/login", values);
       setLoading(false);
       message.success("Welcome back, " + data.user.name + "!");
-      localStorage.setItem(
-        "user",
-        JSON.stringify({ ...data.user, password: "" })
-      );
+      const userData = { ...data.user, password: "" };
+      if (rememberMe) {
+        localStorage.setItem("user", JSON.stringify(userData));
+      } else {
+        sessionStorage.setItem("user", JSON.stringify(userData));
+      }
       navigate("/");
     } catch (error) {
       setLoading(false);
-      message.error("Something went wrong. Please try again.");
+      console.log(error);
+      message.error("Incorrect email or password. Please try again.");
     }
   };
 
-  // Prevent logged-in user from accessing login page
   useEffect(() => {
-    if (localStorage.getItem("user")) {
+    if (localStorage.getItem("user") || sessionStorage.getItem("user")) {
       navigate("/");
     }
   }, [navigate]);
@@ -58,12 +62,25 @@ const Login = () => {
                 { required: true, message: "Please input your password!" },
               ]}
             >
-              <Input type="password" />
+              <Input.Password
+                iconRender={(visible) =>
+                  visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
+                }
+                visibilityToggle
+              />
+            </Form.Item>
+            <Form.Item name="remember" valuePropName="checked">
+              <Checkbox onChange={(e) => setRememberMe(e.target.checked)}>
+                Remember Me
+              </Checkbox>
             </Form.Item>
             <div className="d-flex justify-content-between">
+              <Link to="/forgot-password">Forgot Password?</Link>
               <Link to="/register">Not a user? Register Here</Link>
-              <button className="btn btn-primary">Login</button>
             </div>
+            <Button type="primary" htmlType="submit" className="btn btn-primary">
+              Login
+            </Button>
           </Form>
         </div>
       </div>

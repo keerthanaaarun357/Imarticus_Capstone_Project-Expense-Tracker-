@@ -2,7 +2,7 @@ import React from "react";
 import { Progress } from "antd";
 import "./Analytics.css";
 
-const Analytics = ({ allTransaction }) => {
+const Analytics = ({ allTransaction, walletBalance }) => {
   const categories = [
     "salary",
     "tip",
@@ -15,124 +15,116 @@ const Analytics = ({ allTransaction }) => {
     "tax",
   ];
 
-  const totalTransaction = allTransaction.length;
-  const totalIncomeTransactions = allTransaction.filter(
-    (transaction) => transaction.type === "income"
+  const transactionCount = allTransaction.length;
+  const incomeTransactions = allTransaction.filter(
+    (txn) => txn.type === "income"
   );
-  const totalExpenseTransactions = allTransaction.filter(
-    (transaction) => transaction.type === "expense"
+  const expenseTransactions = allTransaction.filter(
+    (txn) => txn.type === "expense"
   );
-  const totalIncomePercent =
-    (totalIncomeTransactions.length / totalTransaction) * 100;
-  const totalExpensePercent =
-    (totalExpenseTransactions.length / totalTransaction) * 100;
 
-  const totalTurnover = allTransaction.reduce(
-    (acc, transaction) => acc + transaction.amount,
-    0
+  const incomePercent = ((incomeTransactions.length / transactionCount) * 100).toFixed(0);
+  const expensePercent = ((expenseTransactions.length / transactionCount) * 100).toFixed(0);
+
+  const totalAmount = allTransaction.reduce(
+    (acc, txn) => acc + txn.amount, 0
   );
-  const totalIncomeTurnover = allTransaction
-    .filter((transaction) => transaction.type === "income")
-    .reduce((acc, transaction) => acc + transaction.amount, 0);
-  const totalExpenseTurnover = allTransaction
-    .filter((transaction) => transaction.type === "expense")
-    .reduce((acc, transaction) => acc + transaction.amount, 0);
-  const totalIncomeTurnoverPercent =
-    (totalIncomeTurnover / totalTurnover) * 100;
-  const totalExpenseTurnoverPercent =
-    (totalExpenseTurnover / totalTurnover) * 100;
+  const incomeTotal = incomeTransactions.reduce((acc, txn) => acc + txn.amount, 0);
+  const expenseTotal = expenseTransactions.reduce((acc, txn) => acc + txn.amount, 0);
+  
+  const incomePercentage = ((incomeTotal / totalAmount) * 100).toFixed(0);
+  const expensePercentage = ((expenseTotal / totalAmount) * 100).toFixed(0);
+
+  // Calculate total amount left in wallet
+  const totalLeftInWallet = walletBalance - expenseTotal;
+
   return (
     <>
-      <div className="rows">
-        <div>
-          <div className="card">
-            <div className="card-header">
-              Total Transactions: {totalTransaction};
+      <div className="analytics-summary">
+        <div className="summary-card">
+          <div className="summary-header">
+            Total Transactions: {transactionCount}
+          </div>
+          <div className="summary-body">
+            <div className="transaction-counts">
+              <h5 className="income-text">
+                Income: {incomeTransactions.length}
+              </h5>
+              <h5 className="expense-text">
+                Expense: {expenseTransactions.length}
+              </h5>
             </div>
-            <div className="card-body">
-              <div className="accounts">
-                <h5 className="text-success">
-                  Income: {totalIncomeTransactions.length}
-                </h5>
-                <h5 className="text-danger">
-                  Expense: {totalExpenseTransactions.length}
-                </h5>
-              </div>
-              <div className="graphs">
-                <Progress
-                  type="circle"
-                  strokeColor={"green"}
-                  className="mx-2"
-                  percent={totalIncomePercent.toFixed(0)}
-                />
-                <Progress
-                  type="circle"
-                  strokeColor={"red"}
-                  className="mx-2"
-                  percent={totalExpensePercent.toFixed(0)}
-                />
-              </div>
-              <div className="graphTitle">
-                <h4>Category Wise Income</h4>
-              </div>
+            <div className="transaction-progress">
+              <Progress
+                type="circle"
+                strokeColor="green"
+                className="progress-circle"
+                percent={incomePercent}
+              />
+              <Progress
+                type="circle"
+                strokeColor="red"
+                className="progress-circle"
+                percent={expensePercent}
+              />
+            </div>
+            <div className="progress-title">
+              <h4>Income vs Expense</h4>
             </div>
           </div>
         </div>
-        <div>
-          <div className="card">
-            <div className="card-header">Total Turnover: {totalTurnover};</div>
-            <div className="card-body">
-              <div className="accounts">
-                <h5 className="text-success">
-                  Income: {totalIncomeTurnover.length}
-                </h5>
-                <h5 className="text-danger">
-                  Expense: {totalExpenseTurnover.length}
-                </h5>
-              </div>
-              <div className="graphs">
-                <Progress
-                  type="circle"
-                  strokeColor={"green"}
-                  className="mx-2"
-                  percent={totalIncomeTurnoverPercent.toFixed(0)}
-                />
-                <Progress
-                  type="circle"
-                  strokeColor={"red"}
-                  className="mx-2"
-                  percent={totalExpenseTurnoverPercent.toFixed(0)}
-                />
-              </div>
-              <div className="graphTitle">
-                <h4>Category Wise Expense</h4>
-              </div>
+        <div className="summary-card">
+          <div className="summary-header">
+            Total Amount: {totalAmount}
+          </div>
+          <div className="summary-body">
+            <div className="transaction-counts">
+              <h5 className="income-text">
+                Total Income: {incomeTotal}
+              </h5>
+              <h5 className="expense-text">
+                Total Expense: {expenseTotal}
+              </h5>
+            </div>
+            <div className="transaction-progress">
+              <Progress
+                type="circle"
+                strokeColor="green"
+                className="progress-circle"
+                percent={incomePercentage}
+              />
+              <Progress
+                type="circle"
+                strokeColor="red"
+                className="progress-circle"
+                percent={expensePercentage}
+              />
+            </div>
+            <div className="progress-title">
+              <h4>Turnover Analysis</h4>
             </div>
           </div>
         </div>
       </div>
-      <br></br>
-      <br></br>
-      <div className="row mt-3">
+
+      <div className="wallet-summary mt-3">
+        <h4>Total Amount Left in Wallet: {totalLeftInWallet}</h4>
+      </div>
+
+      <div className="category-analysis row mt-3">
         <div className="col-md-5">
-          <h4>Category Wise Income</h4>
-          {categories.map((category) => {
-            const amount = allTransaction
-              .filter(
-                (transaction) =>
-                  transaction.type === "income" &&
-                  transaction.category === category
-              )
-              .reduce((acc, transaction) => acc + transaction.amount, 0);
+          <h4>Income by Category</h4>
+          {categories.map((cat) => {
+            const categoryIncome = allTransaction
+              .filter((txn) => txn.type === "income" && txn.category === cat)
+              .reduce((acc, txn) => acc + txn.amount, 0);
             return (
-              amount > 0 && (
-                <div className="card">
+              categoryIncome > 0 && (
+                <div className="category-card" key={cat}>
                   <div className="card-body">
-                    <h5>{category}</h5>
+                    <h5>{cat}</h5>
                     <Progress
-                      percent={((amount / totalIncomeTurnover) * 100).toFixed(
-                        0
-                      )}
+                      percent={((categoryIncome / incomeTotal) * 100).toFixed(0)}
                     />
                   </div>
                 </div>
@@ -141,24 +133,18 @@ const Analytics = ({ allTransaction }) => {
           })}
         </div>
         <div className="col-md-5">
-          <h4>Category Wise Expense</h4>
-          {categories.map((category) => {
-            const amount = allTransaction
-              .filter(
-                (transaction) =>
-                  transaction.type === "expense" &&
-                  transaction.category === category
-              )
-              .reduce((acc, transaction) => acc + transaction.amount, 0);
+          <h4>Expense by Category</h4>
+          {categories.map((cat) => {
+            const categoryExpense = allTransaction
+              .filter((txn) => txn.type === "expense" && txn.category === cat)
+              .reduce((acc, txn) => acc + txn.amount, 0);
             return (
-              amount > 0 && (
-                <div className="card">
+              categoryExpense > 0 && (
+                <div className="category-card" key={cat}>
                   <div className="card-body">
-                    <h5>{category}</h5>
+                    <h5>{cat}</h5>
                     <Progress
-                      percent={((amount / totalExpenseTurnover) * 100).toFixed(
-                        0
-                      )}
+                      percent={((categoryExpense / expenseTotal) * 100).toFixed(0)}
                     />
                   </div>
                 </div>

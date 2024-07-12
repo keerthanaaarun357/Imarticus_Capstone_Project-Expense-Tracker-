@@ -1,32 +1,33 @@
-
 .welcome-container {
     background: rgba(255, 255, 255, 0.8);
     padding: 40px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     text-align: center;
-    width: 600px;
+    width: 100%; 
+    max-width: 1200px; 
+    margin: auto; 
 }
 
 .welcome-message {
-    font-family: 'Your Custom Font', sans-serif;
+    font-family:  sans-serif;
     font-size: 32px;
     margin-bottom: 10px;
 }
 
 .intro-text {
-    font-family: 'Your Custom Font', sans-serif;
+    font-family:  sans-serif;
     font-size: 18px;
     margin-bottom: 20px;
     color: #667;
 }
 
-.filters{
+.filters {
     color: black;
     padding: 20px 33px;
 }
 
-.btn-primary{
+.btn-primary {
     background: #7EB9CA;
     border: none;
     color: #fff;

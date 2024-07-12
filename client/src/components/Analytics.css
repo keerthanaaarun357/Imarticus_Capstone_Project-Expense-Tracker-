@@ -1,52 +1,62 @@
-
-
-.rows{
+.analytics-summary {
     display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    padding: 45px 35px;
-}
-
-
-.accounts{
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-}
-
-.graphs{
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    padding: 20px 10px 0;
-}
-
-.card{
-    padding: 20px 20px 0;
-}
-
-.card-header{
+    justify-content: space-between;
+    margin: 20px 0;
+  }
+  
+  .summary-card {
+    background: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    flex: 1;
+    margin: 0 10px;
+  }
+  
+  .summary-header {
     font-size: 18px;
-    color: #fff;
-    font-weight: 500;
-    background: #6593a0;
-    border: none;
-}
-
-.graphTitle{
+    font-weight: bold;
+  }
+  
+  .summary-body {
     text-align: center;
-    color: #6593a0;
-    padding: 30px 0px 0px;
-    font-weight: 1000;
-}
-
-.text-success{
-    font-size: 18px;
-    color: #579c55;
-    font-weight: 500;
-}
-.text-danger{
-    font-size: 18px;
-    color: #cf3c32;
-    font-weight: 500;
-}
+  }
+  
+  .transaction-counts {
+    margin: 10px 0;
+  }
+  
+  .income-text {
+    color: green;
+  }
+  
+  .expense-text {
+    color: red;
+  }
+  
+  .transaction-progress {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .progress-title {
+    margin-top: 10px;
+  }
+  
+  .wallet-summary {
+    text-align: center;
+    font-size: 20px;
+    margin-top: 20px;
+  }
+  
+  .category-analysis {
+    margin-top: 20px;
+  }
+  
+  .category-card {
+    background: #f9f9f9;
+    margin: 10px 0;
+    padding: 15px;
+    border-radius: 5px;
+  }
+  
