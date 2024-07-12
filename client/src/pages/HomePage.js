@@ -52,7 +52,7 @@ const HomePage = () => {
               setShowModal(true);
             }}
           />
-          <DeleteOutlined className="mx-2" />
+          <DeleteOutlined className="mx-2" onClick={() => handleDelete(record)} />
         </div>
       ),
     },
