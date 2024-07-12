@@ -21,11 +21,11 @@ app.use('/api/v1/users', require("./path/userPath")); // User routes
 app.use('/api/v1/transactions', require("./path/transactionPath")); 
 
 // Serve static files (for client-side application)
-app.use(express.static(path.join(__dirname, "./client/src")));
+app.use(express.static(path.join(__dirname, "../client/src")));
 
 // Catch-all route to serve the client-side application's index.html
 app.get("*", function (req, res) {
-  res.sendFile(path.join(__dirname, "./client/src/index.js"));
+  res.sendFile(path.join(__dirname, "../client/src/index.js"));
 });
 
 const PORT = process.env.PORT || 8000; 
