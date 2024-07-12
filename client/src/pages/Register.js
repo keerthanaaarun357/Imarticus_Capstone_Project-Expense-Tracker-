@@ -1,16 +1,22 @@
 import React, { useState, useEffect } from "react";
-import { Form, Input, message } from "antd";
+import { Form, Input, message, Checkbox, Button } from "antd";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Spinner from "../components/Spinner";
+import { EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
 import './Register.css';
 
 const Register = () => {
     const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
+    const [passwordVisible, setPasswordVisible] = useState(false);
 
     // Form submit handler
     const submitHandler = async (values) => {
+        if (values.password !== values.confirmPassword) {
+            message.error("Passwords do not match!");
+            return;
+        }
         try {
             console.log(values);
             setLoading(true);
@@ -47,11 +53,25 @@ const Register = () => {
                             <Input type="email" />
                         </Form.Item>
                         <Form.Item label="Password" name="password" rules={[{ required: true, message: 'Please input your password!' }]}>
-                            <Input type="password" />
+                            <Input.Password
+                                iconRender={visible => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)}
+                                visibilityToggle
+                            />
+                        </Form.Item>
+                        <Form.Item label="Confirm Password" name="confirmPassword" rules={[{ required: true, message: 'Please confirm your password!' }]}>
+                            <Input.Password
+                                iconRender={visible => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)}
+                                visibilityToggle
+                            />
+                        </Form.Item>
+                        <Form.Item name="terms" valuePropName="checked" rules={[{ required: true, message: 'Please accept the terms and conditions!' }]}>
+                            <Checkbox>
+                                I accept the <Link to="/terms">terms and conditions</Link>
+                            </Checkbox>
                         </Form.Item>
                         <div className="d-flex justify-content-between">
                             <Link to="/login">Already registered? Login here</Link>
-                            <button className="btn btn-primary">Register</button>
+                            <Button type="primary" htmlType="submit">Register</Button>
                         </div>
                     </Form>
                 </div>
