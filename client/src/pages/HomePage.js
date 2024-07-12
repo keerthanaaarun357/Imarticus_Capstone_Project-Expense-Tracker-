@@ -269,9 +269,6 @@ const HomePage = () => {
                 <Select.Option value="tax">Tax</Select.Option>
               </Select>
             </Form.Item>
-            <Form.Item label="Tags" name="tags">
-              <Input type="text" />
-            </Form.Item>
             <Form.Item label="Date" name="date">
               <Input type="date" />
             </Form.Item>
