@@ -14,7 +14,7 @@ const Register = () => {
         try {
             console.log(values);
             setLoading(true);
-            await axios.post("/users", values);
+            await axios.post("/api/v1/users/register", values);
             message.success("Registration Successful! Welcome aboard!");
             setLoading(false);
             navigate("/login");
