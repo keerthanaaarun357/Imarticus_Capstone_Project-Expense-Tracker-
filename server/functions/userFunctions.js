@@ -17,12 +17,13 @@ const loginController = async (req, res) => {
 
 const registerController = async (req, res) => {
     try {
-        const newUser = new userModel(req.body);
-        await newUser.save();
-
-        res.status(201).json({ success: true, newUser });
+        const { name, email, password } = req.body;
+        const user = new User({ name, email, password });
+        await user.save();
+        res.status(201).json({ message: 'User registered successfully' });
     } catch (error) {
-        res.status(500).json({ success: false, error: error.message });
+        console.error(error);
+        res.status(500).json({ message: 'Server error' });
     }
 };
 
